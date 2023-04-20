@@ -16,7 +16,6 @@ fake = Faker()
 
 while True:
     count += 1
-    missouri = address.Address.generate_MO_address()
     addy = address.Address.generate_address()
     phone_str = phone.Phone.generate_phone(addy).randomize_format()
 
