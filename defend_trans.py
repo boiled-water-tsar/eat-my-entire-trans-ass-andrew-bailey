@@ -29,7 +29,8 @@ while True:
             "TextFieldController_3": phone_str,
             "ParagraphTextFieldController": fake.paragraph(10)}
 
-    if DEBUG: print(f"Attempting to submit {list(data.values())[:-1]}...")
+    if DEBUG:
+        print(f"Attempting to submit {list(data.values())[:-1]}...")
 
     data_json = json.dumps(data)
     headers = {"Content-Type": "application/json",
@@ -38,29 +39,34 @@ while True:
                "Cookie": ""}
     try:
         response = requests.post(URL, data=data_json, headers=headers)
-    except ConnectionError:
+    except ConnectionError as connection_error:
         print("A connection error occurred. ")
         print("This could be a normal network error or the connection could have been blocked by the host.")
+        print(f"Error text: {connection_error}")
         print("Trying again in 10 seconds...")
         time.sleep(retryTimeoutLength)
-    except requests.HTTPError:
+    except requests.HTTPError as http_error:
         print("An HTTP error occurred.")
         print("This means the program received an invalid HTTP response from the server.")
+        print(f"Error text: {http_error}")
         print("Trying again in 10 seconds...")
         time.sleep(retryTimeoutLength)
-    except TimeoutError:
+    except TimeoutError as timeout_error:
         print("A timeout error occurred.")
         print("This means the server waited too long to send a response.")
+        print(f"Error text: {timeout_error}")
         print("Trying again in 10 seconds...")
         time.sleep(retryTimeoutLength)
-    except requests.exceptions.RequestException:
+    except requests.exceptions.RequestException as request_exception:
         print("A request error occurred.")
         print("This means there was an ambiguous exception that occurred while handling the request.")
+        print(f"Error text: {request_exception}")
         print("Trying again in 10 seconds...")
         time.sleep(retryTimeoutLength)
-    except:
+    except Exception as exception:
         print("An unknown error occurred.")
         print("Trying again in 10 seconds...")
+        print(f"Error text: {exception}")
         time.sleep(retryTimeoutLength)
     else:  # if there were no errors
         if not response.ok:

@@ -3,9 +3,9 @@ import random
 from typing import Optional
 
 
-addresses = open('mo.csv', 'rb')
+addresses = open('resources/mo.csv', 'rb')
 # max value for random byte seeking
-bound = os.path.getsize('mo.csv') - 2 # skip the final newline+null
+bound = os.path.getsize('resources/mo.csv') - 2  # skip the final newline+null
 # ensure bound does not include the final location in dataset for 1/n edge case
 addresses.seek(bound)
 while addresses.read(1) != b'\n':

@@ -68,8 +68,8 @@ class Phone:
 
     @staticmethod
     def address_to_prefix() -> str:
-        return str(random.randint(100,999))
+        return str(random.randint(100, 999))
 
     @staticmethod
     def random_line_no() -> str:
-        return str(random.randint(1000,9999))
+        return str(random.randint(1000, 9999))
