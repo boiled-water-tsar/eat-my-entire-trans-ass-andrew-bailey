@@ -9,6 +9,7 @@ import address
 
 fake = Faker()
 URL = "https://ago.mo.gov/file-a-complaint/transgender-center-concerns?sf_cntrl_id=ctl00$MainContent$C001"
+a=0
 
 while True:
     missouri = address.Address.generate_MO_address()
@@ -36,7 +37,8 @@ while True:
     elif "already submitted" in response.text:
         print("Form already submitted, workaround required")
         sys.exit(1)
-
-    print(f"Response submitted for {data['TextFieldController_5']}, {data['TextFieldController_4']}")
+    
+    a+=1
+    print(f"Response submitted for {data['TextFieldController_5']}, {data['TextFieldController_4']}. This is submission #{a}")
 
     time.sleep(1)
