@@ -1,34 +1,24 @@
-import json
 import time
 
 import requests
 from faker import Faker
 
-from src.requests.form_builder import form_builder
+from src.requests.form_builder import Form
 
 requestTimeoutLength = 1  # Seconds to wait between successful requests
 retryTimeoutLength = 10  # Seconds to wait after an error before retrying
 
-DEBUG = False
 URL = "https://ago.mo.gov/file-a-complaint/transgender-center-concerns?sf_cntrl_id=ctl00$MainContent$C001"
 count = 0
 
 fake = Faker()
+form = Form()
 
 while True:
     count += 1
-    data = form_builder()
 
-    if DEBUG:
-        print(f"Attempting to submit {list(data.values())[:-1]}...")
-
-    data_json = json.dumps(data)
-    headers = {"Content-Type": "application/json",
-               "User-Agent": fake.user_agent(),
-               "X-Forwarded-For": fake.ipv4(),
-               "Cookie": ""}
     try:
-        response = requests.post(URL, data=data_json, headers=headers)
+        response = form.send_request()
     except ConnectionError as connection_error:
         print("A connection error occurred. ")
         print("This could be a normal network error or the connection could have been blocked by the host.")
@@ -68,5 +58,5 @@ while True:
             print("Trying again in 10 seconds...")
             time.sleep(retryTimeoutLength)
         else:
-            print(f"Response {count} submitted for {data['TextFieldController_5']}, {data['TextFieldController_4']}")
+            print(f"Response {count} submitted successfully")
             time.sleep(requestTimeoutLength)
