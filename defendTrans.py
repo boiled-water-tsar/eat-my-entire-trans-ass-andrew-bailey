@@ -3,27 +3,34 @@ import json
 import time
 from faker import Faker
 import address
+import phone
 
 requestTimeoutLength = 1  # Seconds to wait between successful requests
 retryTimeoutLength = 10  # Seconds to wait after an error before retrying
 
-fake = Faker()
+DEBUG = False
 URL = "https://ago.mo.gov/file-a-complaint/transgender-center-concerns?sf_cntrl_id=ctl00$MainContent$C001"
 count = 0
+
+fake = Faker()
 
 while True:
     count += 1
     missouri = address.Address.generate_MO_address()
+    addy = address.Address.generate_address()
+    phone_str = phone.Phone.generate_phone(addy).randomize_format()
 
     data = {"TextFieldController_4": fake.first_name(),
             "TextFieldController_5": fake.last_name(),
-            "TextFieldController_1": missouri.street_address,
-            "TextFieldController_2": missouri.city,
+            "TextFieldController_1": addy.street_address,
+            "TextFieldController_2": addy.city,
             "DropdownListFieldController": "MO",
-            "TextFieldController_6": missouri.postcode,
+            "TextFieldController_6": addy.postcode,
             "TextFieldController_0": fake.free_email(),
-            "TextFieldController_3": fake.phone_number(),
+            "TextFieldController_3": phone_str,
             "ParagraphTextFieldController": fake.paragraph(10)}
+
+    if DEBUG: print(f"Attempting to submit {list(data.values())[:-1]}...")
 
     data_json = json.dumps(data)
     headers = {"Content-Type": "application/json",

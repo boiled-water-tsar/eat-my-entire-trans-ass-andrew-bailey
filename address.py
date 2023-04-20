@@ -21,13 +21,13 @@ class Address:
         self.postcode = postcode
 
     def __repr__(self):
-        return f"{self.Number} {self.Street}, {(self.Unit + ', ') if self.Unit else ''}{self.City}, MO, {self.Postcode}"
+        return f"{self.street_address}, {(self.unit + ', ') if self.unit else ''}{self.city}, MO, {self.postcode}"
 
     # ram-constant, time-constant random choice alg for a missouri address
     # pick a random byte offset, seek to it, increment until newline, read until next newline
     # avoid picking EOF by bounding randint to the second-to-last newline; see above
     @classmethod
-    def generate_MO_address(cls):
+    def generate_address(cls):
         """generates a random address in missouri. dataset from kaggle
 
         Returns:
