@@ -1,9 +1,10 @@
-import requests
 import json
 import time
+
+import requests
 from faker import Faker
-import address
-import phone
+
+from src.requests.form_builder import form_builder
 
 requestTimeoutLength = 1  # Seconds to wait between successful requests
 retryTimeoutLength = 10  # Seconds to wait after an error before retrying
@@ -16,18 +17,7 @@ fake = Faker()
 
 while True:
     count += 1
-    addy = address.Address.generate_address()
-    phone_str = phone.Phone.generate_phone(addy).randomize_format()
-
-    data = {"TextFieldController_4": fake.first_name(),
-            "TextFieldController_5": fake.last_name(),
-            "TextFieldController_1": addy.street_address,
-            "TextFieldController_2": addy.city,
-            "DropdownListFieldController": "MO",
-            "TextFieldController_6": addy.postcode,
-            "TextFieldController_0": fake.free_email(),
-            "TextFieldController_3": phone_str,
-            "ParagraphTextFieldController": fake.paragraph(10)}
+    data = form_builder()
 
     if DEBUG:
         print(f"Attempting to submit {list(data.values())[:-1]}...")

@@ -7,3 +7,5 @@ pyvenv.cfg
 __pycache__
 dataset.py
 full.csv
+
+.idea

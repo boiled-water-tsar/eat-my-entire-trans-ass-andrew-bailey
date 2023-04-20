@@ -5,8 +5,7 @@
 import random
 from typing import Optional
 
-import address
-
+from src.generators import address
 
 MO_AREA_CODES = ['314', '557', '417', '573', '636', '660', '816']
 
