@@ -1,30 +1,48 @@
-# Tool for submitting data to the Missouri Attorney General Transgender Center Concerns Form
+# Tool for submitting data to the Missouri Attorney General Transgender Center Concerns Form - TRANS RIGHTS
 
-Url: https://ago.mo.gov/file-a-complaint/transgender-center-concerns
+Python program using the frankly terrible code of the Missouri Attorney General's office to flood their snitching
+website with garbage and noise.
 
-If you want to be a helpful citizen and submit some data to Andrew Bailey, install requirements.txt and run defendTrans.py. It's faster than going to https://ago.mo.gov/file-a-complaint/transgender-center-concerns and submitting manually and this way we can make sure the website really gets some use.
+They want us to die but honey, these colors don't run 🏳️‍⚧️🏳️‍⚧️🏳️‍⚧️
 
-The `time.sleep()` is set conservatively, but play with it maybe there's no rate limiting.
+## How it's done and a bit of history
 
-## Installation guide
+In a nutshell: Garbage and noise is generate -> a captcha is solved -> noise is sent to the REST API serving the snitching form.
+The program has been through several permutations. From sending the rawest of garbage to sending data specific enough to
+MO that it would be a herculean task to sort through.
+Security has been attempted implemented and bypassed from nothing (as in, no security at all lmao what were they thinking)
+to ensuring an IP could only submit one report to introducing a captcha.
+As time goes on I'm sure the MO AGs office will introduce even more security, and we will defeat it all.
 
-First install python and pip:[https://www.python.org/downloads/](https://www.python.org/downloads/)
+## How to use
 
-[https://packaging.python.org/en/latest/tutorials/installing-packages/](https://packaging.python.org/en/latest/tutorials/installing-packages/)
+Strongly consider using a VPN. Submitting millions of false reports may not be illegal, but it might also be wire fraud?
+IANAL. For VPNs there's a number of options such as [Cloudflare WARP](https://1.1.1.1) or [Proton VPN](https://protonvpn.com),
+and of course there's always Starbucks free WI-FI. 
 
-You will be using the command py for windows (in cmd), or python3 for MacOS (in terminal) and Linux
+### Installation
 
-install dependencies
+Install Python version 3.10 or higher and pip. You can learn how to at [https://python.org](https://python.org).
 
-    python3 -m pip install certifi charset-normalizer Faker idna python-dateutil requests six urllib3
+Then either clone this repository or download and extract it
 
-download and extract this repository and run the script by entering e.g.:
+Install depedencies
+> python3 -m pip install -r requirements.txt
 
-    windows: py "C:\your\downloads\folder\extracted_folder\defend_trans.py"
-    macOS/linux: python3 /downloaded/directory/path/to/defend_trans.py
+or
 
-Using the later version you should see something like:
+> pip install -r requirements.txt
 
-    $ python3 defend_trans.py
-    Response submitted for Barlett, Eric
-    Response submitted for Rivers, Stacey
+When the dependencies have been installed run the program with
+
+> python3 defend_trans.py
+
+If the program is running successfully you should see output akin to
+
+> Response submitted for Barlett, Eric
+> 
+> Response submitted for Rivers, Stacey
+
+## How to contribute
+
+Oh god please contribute this is too important to just have me, a dumb idiot, make and handle.
