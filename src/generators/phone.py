@@ -49,21 +49,20 @@ class Phone:
 
     @staticmethod
     def city_to_area(city: str) -> str:
-        match city.lower():
-            case 'saint louis' | 'st. louis' | 'st louis':
-                return random.choice(['314','557'])
-            case 'springfield' | 'joplin' | 'branson':
-                return '417'
-            case 'columbia' | 'jefferson city' | 'rolla' | 'cape girardeau' | 'perryville' | 'hannibal':
-                return '573'
-            case 'saint charles' | 'st charles' | 'st. charles' | 'jefferson':
-                return '636'
-            case 'sedalia' | 'kirksville' | 'warrensburg' | 'maryville':
-                return '660'
-            case 'kansas city' | 'saint joseph' | 'st joseph' | 'st. joseph':
-                return '816'
-            case _:
-                return random.choice(MO_AREA_CODES)
+        if city.lower() in [ 'saint louis', 'st. louis', 'st louis' ]:
+            return random.choice(['314','557'])
+        if city.lower() in [ 'springfield', 'joplin', 'branson' ]:
+            return '417'
+        if city.lower() in [ 'columbia', 'jefferson city', 'rolla', 'cape girardeau', 'perryville', 'hannibal' ]:
+            return '573'
+        if city.lower() in [ 'saint charles', 'st charles', 'st. charles', 'jefferson' ]:
+            return '636'
+        if city.lower() in [ 'sedalia', 'kirksville', 'warrensburg', 'maryville' ]:
+            return '660'
+        if city.lower() in [ 'kansas city', 'saint joseph', 'st joseph', 'st. joseph' ]:
+            return '816'
+        else:
+            return random.choice(MO_AREA_CODES)
 
     @staticmethod
     def address_to_prefix() -> str:
