@@ -18,7 +18,7 @@ As time goes on I'm sure the MO AGs office will introduce even more security, an
 
 Strongly consider using a VPN. Submitting millions of false reports may not be illegal, but it might also be wire fraud?
 IANAL. For VPNs there's a number of options such as [Cloudflare WARP](https://1.1.1.1) or [Proton VPN](https://protonvpn.com),
-and of course there's always Starbucks free WI-FI. 
+and of course there's always Starbucks free WI-FI.
 
 ### Installation
 
@@ -40,7 +40,7 @@ When the dependencies have been installed run the program with
 If the program is running successfully you should see output akin to
 
 > Response submitted for Barlett, Eric
-> 
+>
 > Response submitted for Rivers, Stacey
 
 ## How to contribute
