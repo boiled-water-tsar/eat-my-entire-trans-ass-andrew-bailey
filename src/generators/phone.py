@@ -43,7 +43,7 @@ class Phone:
         res += self.prefix + ' ' + self.line_no
         if random.random() < 0.5:
             res = res.replace(' ', '-')
-        elif random.random() < 0.5:
+        elif random.random() > 0.5:
             res = res.replace(' ','')
         return res
 
