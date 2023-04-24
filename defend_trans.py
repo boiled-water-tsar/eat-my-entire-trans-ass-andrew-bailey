@@ -1,3 +1,4 @@
+import os
 import time
 
 import requests
@@ -5,7 +6,7 @@ from faker import Faker
 
 from src.requests.form_builder import Form
 
-requestTimeoutLength = 1  # Seconds to wait between successful requests
+requestTimeoutLength = float(os.getenv("SLEEP_TIME", 1)) # Seconds to wait between successful requests
 retryTimeoutLength = 10  # Seconds to wait after an error before retrying
 
 URL = "https://ago.mo.gov/file-a-complaint/transgender-center-concerns?sf_cntrl_id=ctl00$MainContent$C001"

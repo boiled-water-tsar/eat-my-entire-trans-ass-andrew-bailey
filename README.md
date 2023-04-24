@@ -14,13 +14,20 @@ Security has been attempted implemented and bypassed from nothing (as in, no sec
 to ensuring an IP could only submit one report to introducing a captcha.
 As time goes on I'm sure the MO AGs office will introduce even more security, and we will defeat it all.
 
+## Manual installation guide
+
 ## How to use
 
 Strongly consider using a VPN. Submitting millions of false reports may not be illegal, but it might also be wire fraud?
 IANAL. For VPNs there's a number of options such as [Cloudflare WARP](https://1.1.1.1) or [Proton VPN](https://protonvpn.com),
-and of course there's always Starbucks free WI-FI. 
+and of course there's always Starbucks free WI-FI.
 
-### Installation
+## Quick start guide
+
+You can simply run `docker-compose up` to start submitting data.
+If you want to modify the timeout between requests, you can use `SLEEP_TIME=0.5 docker-compose up`
+
+### Manual installation
 
 Install Python version 3.10 or higher and pip. You can learn how to at [https://python.org](https://python.org).
 
@@ -40,7 +47,7 @@ When the dependencies have been installed run the program with
 If the program is running successfully you should see output akin to
 
 > Response submitted for Barlett, Eric
-> 
+>
 > Response submitted for Rivers, Stacey
 
 ## How to contribute
